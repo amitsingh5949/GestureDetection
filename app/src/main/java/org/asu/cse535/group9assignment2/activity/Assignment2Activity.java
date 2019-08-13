@@ -1,12 +1,10 @@
-package org.asu.cse535.group9assignment2;
+package org.asu.cse535.group9assignment2.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
-
-import android.content.Context;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -14,23 +12,22 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
-
-import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+
+
+import org.asu.cse535.group9assignment2.R;
 import org.asu.cse535.group9assignment2.bean.AccelerometerVO;
 import org.asu.cse535.group9assignment2.db.DatabaseHelper;
 import org.asu.cse535.group9assignment2.server.DownloadDb;
@@ -41,8 +38,9 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements SensorEventListener {
-    private static final String TAG = "MainActivity";
+public class Assignment2Activity extends AppCompatActivity  implements SensorEventListener {
+
+    private static final String TAG = "Assignment2Activity";
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private Sensor sensors;
@@ -82,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_assignment2);
 
         patientName = (EditText) findViewById(R.id.patientName);
         patientAge = (EditText) findViewById(R.id.patientAge);
@@ -148,9 +146,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     return;
                 }
 
-                 name = patientName.getText().toString().replaceAll("\\s+", "_");
-                 age = Integer.parseInt(patientAge.getText().toString());
-                 ID = Integer.parseInt(patientID.getText().toString());
+                name = patientName.getText().toString().replaceAll("\\s+", "_");
+                age = Integer.parseInt(patientAge.getText().toString());
+                ID = Integer.parseInt(patientID.getText().toString());
 
                 String saveFilePath = getApplicationContext().getExternalFilesDir(null).getAbsolutePath()
                         + "/" + SAVE_FOLDER_NAME;
@@ -176,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             public void onClick(View v) {
 
                 try {
-                    UploadDb uploadDb = new UploadDb(MainActivity.this);
+                    UploadDb uploadDb = new UploadDb(Assignment2Activity.this,SERVER_URI,DB_NAME);
                     String uploadFile = getApplicationContext().getExternalFilesDir(null).getAbsolutePath()
                             + "/" + SAVE_FOLDER_NAME + DB_NAME;
 
@@ -200,7 +198,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 if (!overwriteDirectory.exists()) {
                     overwriteDirectory.mkdir();
                 }
-                DownloadDb overwriteDb = new DownloadDb(DB_NAME, overwriteFilePath, MainActivity.this);
+                DownloadDb overwriteDb = new DownloadDb(DB_NAME, overwriteFilePath, Assignment2Activity.this);
                 overwriteDb.execute("");
             }
         });
@@ -418,7 +416,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     protected void onDestroy() {
-        mSensorManager.unregisterListener(MainActivity.this);
+        mSensorManager.unregisterListener(Assignment2Activity.this);
         thread.interrupt();
         super.onDestroy();
     }

@@ -10,14 +10,13 @@ package org.asu.cse535.group9assignment2.server;
  */
 
 
-import android.app.Activity;
-import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
 
-import org.asu.cse535.group9assignment2.MainActivity;
+import org.asu.cse535.group9assignment2.activity.Assignment2Activity;
+import org.asu.cse535.group9assignment2.activity.MainActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -37,14 +36,15 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
-import static org.asu.cse535.group9assignment2.MainActivity.DB_NAME;
-import static org.asu.cse535.group9assignment2.MainActivity.SERVER_URI;
+import static org.asu.cse535.group9assignment2.activity.Assignment2Activity.SERVER_URI;
+import static org.asu.cse535.group9assignment2.activity.Assignment2Activity.DB_NAME;
+
 
 public class DownloadDb extends AsyncTask<String, Void, Boolean> {
 
     public static final String TAG = "DOWNLOAD_DB";
 
-    MainActivity mActivity;
+    Assignment2Activity mActivity;
     private boolean downloaded = true;
 
     public static final String DOWNLOAD_URI = SERVER_URI + "/uploads/" + DB_NAME;
@@ -52,7 +52,7 @@ public class DownloadDb extends AsyncTask<String, Void, Boolean> {
     String downloadFilePath;
     String downloadFileName;
 
-    public DownloadDb(String fileName, String filePath, MainActivity mActivity) {
+    public DownloadDb(String fileName, String filePath, Assignment2Activity mActivity) {
         downloadFileName = fileName;
         downloadFilePath = filePath;
         this.mActivity = mActivity;

@@ -3,6 +3,7 @@
     package="org.asu.cse535.group9assignment2">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE\_EXTERNAL\_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.DataMiningActivity"></activity>
+        <activity android:name=".activity.FinalActivity" />
+        <activity android:name=".activity.Assignment2Activity" />
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

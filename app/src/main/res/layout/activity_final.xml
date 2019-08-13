@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.FinalActivity">
+
+    <LinearLayout
+        android:id="@+id/inputGrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/inputHungry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/inputGrid"
+            android:backgroundTint="@android:color/holo_blue_light"
+            android:text="Input Hungry Gesture" />
+        <Button
+            android:id="@+id/inputCop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_blue_light"
+            android:text="Input Cop Gesture" />
+
+        <Button
+            android:id="@+id/inputHeadache"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_blue_light"
+            android:text="Input Headache Gesture" />
+
+        <Button
+            android:id="@+id/inputAbout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_blue_light"
+            android:text="Input About Gesture" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/holo_red_light"
+        android:layout_below="@+id/inputGrid"
+        android:layout_alignParentEnd="true"
+        android:text="Reset" />
+
+    <LinearLayout
+        android:id="@+id/runGrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/inputGrid"
+        android:layout_below="@+id/reset"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/runCop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_green_light"
+            android:text="Run Cop Gesture" />
+
+        <Button
+            android:id="@+id/runHungry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_green_light"
+            android:text="Run Hungry Gesture" />
+
+        <Button
+            android:id="@+id/runHeadAche"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_green_light"
+            android:text="Run HeadAche Gesture" />
+
+        <Button
+            android:id="@+id/runAbout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_green_light"
+            android:text="Run About Gesture" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/resultGrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/inputGrid"
+        android:layout_below="@+id/runGrid"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/truePositiveLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="Roboto"
+            android:text="True Positive"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/truePositiveValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="Roboto"
+            android:text="0%"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:layout_marginLeft="10dp"
+            android:textColor="#8BC34A"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/falsePositiveLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="Roboto"
+            android:text="False Positive"
+            android:layout_marginLeft="10dp"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/falsePositiveValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="Roboto"
+            android:text="0%"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:layout_marginLeft="10dp"
+            android:textColor="#F44336"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

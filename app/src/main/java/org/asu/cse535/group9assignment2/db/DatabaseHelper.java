@@ -10,12 +10,14 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static org.asu.cse535.group9assignment2.activity.Assignment2Activity.DB_NAME;
+
 
 /*
 credits : https://gist.github.com/zabawaba99/980ea292b305cbdd230a
  */
 
-import static org.asu.cse535.group9assignment2.MainActivity.DB_NAME;
+
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 

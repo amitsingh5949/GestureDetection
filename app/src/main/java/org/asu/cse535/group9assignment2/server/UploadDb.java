@@ -13,8 +13,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
-
-import org.asu.cse535.group9assignment2.MainActivity;
+import org.asu.cse535.group9assignment2.activity.Assignment2Activity;
+import org.asu.cse535.group9assignment2.activity.FinalActivity;
 
 import java.io.DataOutputStream;
 import java.io.File;
@@ -32,18 +32,18 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
-import static org.asu.cse535.group9assignment2.MainActivity.DB_NAME;
-import static org.asu.cse535.group9assignment2.MainActivity.SERVER_URI;
 public class UploadDb extends AsyncTask<File, Void, Void> {
 
-    public static final String UPLOAD_URI = SERVER_URI +"/UploadToServer.php";
+    public static  String UPLOAD_URI;
+    public static  String DB_NAME;
 
-
-    MainActivity mActivity;
+    Activity mActivity;
     private boolean uploaded = true;
 
-    public UploadDb(MainActivity mainActivity) {
+    public UploadDb(Activity mainActivity, String uploadRRI, String dbName) {
         this.mActivity = mainActivity;
+        this.UPLOAD_URI = uploadRRI;
+        this.DB_NAME= dbName;
     }
 
 
@@ -116,7 +116,7 @@ public class UploadDb extends AsyncTask<File, Void, Void> {
                 dataOutputStream = new DataOutputStream(httpURLConnection.getOutputStream());
 
                 dataOutputStream.writeBytes(twoHyphens + boundary + lineEnd);
-                dataOutputStream.writeBytes("Content-Disposition: form-data; name=\"uploaded_file\"; filename=\"" + DB_NAME + "\"" + lineEnd);
+                dataOutputStream.writeBytes("Content-Disposition: form-data; name=\"file\"; filename=\"" + DB_NAME + "\"" + lineEnd);
                 dataOutputStream.writeBytes(lineEnd);
 
                 // create a buffer of maximum size
@@ -170,11 +170,16 @@ public class UploadDb extends AsyncTask<File, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-
-        if (uploaded) {
-            Toast.makeText(mActivity.getApplicationContext(), "File Uploaded", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(mActivity.getApplicationContext(), "Failed to upload file", Toast.LENGTH_SHORT).show();
+        if (mActivity instanceof Assignment2Activity) {
+            if (uploaded) {
+                Toast.makeText(mActivity.getApplicationContext(), "File Uploaded", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(mActivity.getApplicationContext(), "Failed to upload file", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else if(mActivity instanceof FinalActivity){
+            ((FinalActivity) mActivity).runAlgorithm();
         }
     }
+
 }
