@@ -10,7 +10,7 @@
         android:id="@+id/inputGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:orientation="vertical">
         <Button
@@ -50,7 +50,7 @@
         android:backgroundTint="@android:color/holo_red_light"
         android:layout_below="@+id/inputGrid"
         android:layout_alignParentEnd="true"
-        android:text="Reset" />
+        android:text="Reset Gesture Data" />
 
     <LinearLayout
         android:id="@+id/runGrid"
@@ -99,7 +99,7 @@
         android:layout_alignStart="@+id/inputGrid"
         android:layout_below="@+id/runGrid"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
         <TextView
@@ -152,6 +152,13 @@
             android:textColor="#F44336"
             android:textStyle="bold"
             android:typeface="sans" />
+
+        <Button
+            android:id="@+id/resetValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:text="Reset" />
 
     </LinearLayout>
 

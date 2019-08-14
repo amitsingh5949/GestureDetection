@@ -217,6 +217,14 @@ public class FinalActivity extends AppCompatActivity implements SensorEventListe
                 reCreateDataFile();
             }
         });
+
+        Button resetValButton = (Button) findViewById(R.id.resetValue);
+        resetValButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                truePositiveVal.setText("0%");
+                falsePositiveVal.setText("0%");
+            }
+        });
     }
 
     public void performRunButtonAction(View v) {
@@ -380,16 +388,16 @@ public class FinalActivity extends AppCompatActivity implements SensorEventListe
                 if (output != null && output.length() > 0 && output.contains("_")) {
                     String[] arr = output.split("_");
                     for (int i = 0; i < 4 && i < arr.length; i++) {
-                        copResult.add(Integer.parseInt(arr[i]));
+                        hungryResult.add(Integer.parseInt(arr[i]));
                     }
                     for (int i = 4; i < 8 && i < arr.length; i++) {
-                        aboutResult.add(Integer.parseInt(arr[i]));
+                        copResult.add(Integer.parseInt(arr[i]));
                     }
                     for (int i = 8; i < 12 && i < arr.length; i++) {
                         headacheResult.add(Integer.parseInt(arr[i]));
                     }
                     for (int i = 12; i < 16 && i < arr.length; i++) {
-                        hungryResult.add(Integer.parseInt(arr[i]));
+                        aboutResult.add(Integer.parseInt(arr[i]));
                     }
                 }
                 showResult();
